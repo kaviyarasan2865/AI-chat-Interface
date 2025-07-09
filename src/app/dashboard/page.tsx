@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import type { TooltipItem } from "chart.js"
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -165,7 +166,7 @@ const doughnutOptions = {
       cornerRadius: 8,
       padding: 12,
       callbacks: {
-        label: (context: any) => {
+        label: (context: TooltipItem<'doughnut'>) => {
           const label = context.label || ""
           const value = context.parsed
           return `${label}: ${value}%`
