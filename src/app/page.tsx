@@ -31,7 +31,7 @@ export default function LandingPage() {
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-              AI Dashboard
+              HelloAI
             </span>
           </div>
           <div className="hidden md:flex items-center space-x-8">
