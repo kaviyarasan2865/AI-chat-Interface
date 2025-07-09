@@ -296,7 +296,7 @@ export default function Dashboard() {
               <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
             </div>
             <div className="flex items-center space-x-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-800 to-purple-600 rounded-full"></div>
             </div>
           </div>
         </div>
@@ -361,17 +361,17 @@ export default function Dashboard() {
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
               <div className="space-y-4">
                 {[
-                  { user: "John Doe", action: "completed a purchase", time: "2 minutes ago" },
-                  { user: "Jane Smith", action: "signed up for premium", time: "5 minutes ago" },
-                  { user: "Mike Johnson", action: "updated profile", time: "10 minutes ago" },
-                  { user: "Sarah Wilson", action: "left a review", time: "15 minutes ago" },
-                  { user: "Tom Brown", action: "shared content", time: "20 minutes ago" },
+                  { user: "Kaviyarasan", action: "completed a purchase", time: "2 minutes ago" },
+                  { user: "Naveen", action: "signed up for premium", time: "5 minutes ago" },
+                  { user: "Sany", action: "updated profile", time: "10 minutes ago" },
+                  { user: "Sri Prakash", action: "left a review", time: "15 minutes ago" },
+                  { user: "Venkatesh", action: "shared content", time: "20 minutes ago" },
                 ].map((activity, index) => (
                   <div
                     key={index}
                     className="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors"
                   >
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
+                    <div className="w-8 h-8 bg-gradient-to-r from-blue-800 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
                       {activity.user
                         .split(" ")
                         .map((n) => n[0])

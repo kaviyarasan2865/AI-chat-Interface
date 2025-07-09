@@ -78,7 +78,7 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
               <button
                 onClick={handleGetStarted}
-                className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center text-lg shadow-lg hover:scale-105"
+                className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold hover:shadow-2xl hover:shadow-blue-800/25 transition-all duration-300 flex items-center text-lg shadow-lg hover:scale-105"
               >
                 Get Started Free
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -150,7 +150,7 @@ export default function LandingPage() {
                 title: "Global Scale",
                 description:
                   "Built to scale globally with distributed infrastructure across 15+ regions. 99.99% uptime guaranteed with edge computing optimization.",
-                color: "from-blue-500 to-purple-500",
+                color: "from-blue-800 to-purple-500",
                 bgColor: "bg-blue-50",
                 borderColor: "border-blue-100",
               },
@@ -205,7 +205,7 @@ export default function LandingPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <button
               onClick={handleGetStarted}
-              className="group px-10 py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center text-lg shadow-lg hover:scale-105"
+              className="group px-10 py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold hover:shadow-2xl hover:shadow-blue-800/25 transition-all duration-300 flex items-center text-lg shadow-lg hover:scale-105"
             >
               Start Free Trial
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />

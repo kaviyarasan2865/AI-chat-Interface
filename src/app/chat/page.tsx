@@ -318,7 +318,7 @@ export default function ChatPage() {
         <div className="fixed inset-0 bg-gray-400 bg-opacity-40" onClick={() => setSidebarOpen(false)} />
         <div className="fixed inset-y-0 left-0 flex w-80 flex-col bg-gray-50 shadow-xl">
           <div className="flex h-16 items-center justify-between px-4 border-b border-gray-200">
-            <span className="text-lg font-semibold text-gray-900">ChatGPT</span>
+            <span className="text-lg font-semibold text-gray-900">HelloAI</span>
             <button onClick={() => setSidebarOpen(false)} className="text-gray-500 hover:text-gray-900">
               <X className="h-6 w-6" />
             </button>
@@ -340,7 +340,7 @@ export default function ChatPage() {
                 placeholder="Search chats"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-gray-100 text-gray-900 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-200"
+                className="w-full pl-10 pr-4 py-2 bg-gray-100 text-gray-900 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-800 border border-gray-200"
               />
             </div>
 
@@ -366,7 +366,7 @@ export default function ChatPage() {
                     onClick={(e) => deleteConversation(conversation.id, e)}
                     className="opacity-0 group-hover:opacity-100 p-1 hover:bg-gray-200 rounded transition-all"
                   >
-                    <Trash2 className="w-3 h-3 text-gray-400" />
+                    <Trash2 className="w-3 h-3 text-gray-400 hover:text-red-500" />
                   </button>
                 </div>
               ))}
@@ -378,7 +378,7 @@ export default function ChatPage() {
       {/* Desktop sidebar */}
       <div className="hidden lg:flex lg:w-80 lg:flex-col bg-gray-50 border-r border-gray-200">
         <div className="flex h-16 items-center px-4 border-b border-gray-200">
-          <span className="text-lg font-semibold text-gray-900">ChatGPT</span>
+          <span className="text-lg font-semibold text-gray-900">HelloAI</span>
         </div>
 
         <div className="flex-1 overflow-y-auto p-4">
@@ -397,7 +397,7 @@ export default function ChatPage() {
               placeholder="Search chats"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-gray-100 text-gray-900 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-200"
+              className="w-full pl-10 pr-4 py-2 bg-gray-100 text-gray-900 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-800 border border-gray-200"
             />
           </div>
 
@@ -414,7 +414,7 @@ export default function ChatPage() {
                 }`}
               >
                 <div className="flex items-center space-x-3 flex-1 min-w-0">
-                  <MessageSquare className="w-4 h-4 flex-shrink-0 text-gray-400" />
+                  {/* <MessageSquare className="w-4 h-4 flex-shrink-0 text-gray-400" /> */}
                   <div className="flex-1 min-w-0">
                     <p className="truncate">{conversation.title}</p>
                     <p className="text-xs text-gray-400">{formatTime(conversation.lastUpdated)}</p>
@@ -424,7 +424,7 @@ export default function ChatPage() {
                   onClick={(e) => deleteConversation(conversation.id, e)}
                   className="opacity-0 group-hover:opacity-100 p-1 hover:bg-gray-200 rounded transition-all"
                 >
-                  <Trash2 className="w-3 h-3 text-gray-400" />
+                  <Trash2 className="w-3 h-3 text-gray-400 hover:text-red-500" />
                 </button>
               </div>
             ))}
@@ -450,11 +450,11 @@ export default function ChatPage() {
               <ArrowLeft className="w-5 h-5" />
             </button>
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-800 to-purple-600 rounded-full flex items-center justify-center">
                 <Sparkles className="w-4 h-4 text-white" />
               </div>
               <div>
-                <h1 className="font-semibold text-gray-900">{currentConversation?.title || "ChatGPT"}</h1>
+                <h1 className="font-semibold text-gray-900">{currentConversation?.title || "HelloAI"}</h1>
                 <p className="text-sm text-gray-500">Online</p>
               </div>
             </div>
@@ -475,7 +475,7 @@ export default function ChatPage() {
               >
                 {message.sender === "assistant" ? (
                   <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-gradient-to-r from-blue-800 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <Sparkles className="w-4 h-4 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -506,7 +506,7 @@ export default function ChatPage() {
                 ) : (
                   <div className="flex justify-end">
                     <div className="max-w-xs lg:max-w-md xl:max-w-lg">
-                      <div className="bg-blue-500 text-white px-4 py-3 rounded-2xl rounded-br-md">
+                      <div className="bg-blue-800 text-white px-4 py-3 rounded-2xl rounded-br-md">
                         <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
                       </div>
                       <p className="text-xs text-gray-400 mt-1 text-right">{formatTime(message.timestamp)}</p>
@@ -519,7 +519,7 @@ export default function ChatPage() {
             {/* Typing indicator */}
             {isTyping && (
               <div className="flex items-start space-x-3 message-enter">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <div className="w-8 h-8 bg-gradient-to-r from-blue-800 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                   <Sparkles className="w-4 h-4 text-white" />
                 </div>
                 <div className="bg-gray-100 rounded-2xl rounded-bl-md px-4 py-3">
@@ -550,21 +550,21 @@ export default function ChatPage() {
                 value={inputValue}
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
-                placeholder="Message ChatGPT..."
-                className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none min-h-[48px] max-h-[120px] leading-6"
+                placeholder="Message HelloAI..."
+                className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-800 focus:border-transparent resize-none min-h-[48px] max-h-[120px] leading-6"
                 disabled={isTyping}
                 rows={1}
               />
               <button
                 onClick={handleSendMessage}
                 disabled={!inputValue.trim() || isTyping}
-                className="absolute right-2 bottom-2 p-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="absolute right-2 bottom-2 p-2 bg-blue-800 text-white rounded-xl hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 <Send className="w-4 h-4" />
               </button>
             </div>
             <p className="text-xs text-gray-500 mt-2 text-center">
-              ChatGPT can make mistakes. Consider checking important information.
+              HelloAI can make mistakes. Consider checking important information.
             </p>
           </div>
         </div>
