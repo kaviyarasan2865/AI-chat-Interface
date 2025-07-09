@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HelloAI Assessment – UI Developer (React.js)
 
-## Getting Started
+## Overview
+This project is a modern, static web app built with React (using Next.js for routing and structure) and Tailwind CSS, designed to reflect the UI quality expected from today's AI product interfaces. It was created as part of a UI Developer Assessment.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Assessment Requirements & Implementation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 1. Landing Page
+- **Modern, minimalistic hero section** with a clear call-to-action ("Get Started").
+- Clean layout inspired by OpenAI/Notion.
+- Button routes to the Dashboard.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. Dashboard Page
+- **Responsive layout** with a sidebar for navigation.
+- **Metric cards** display example stats (revenue, users, etc.).
+- **Charts**: Includes bar, line, and doughnut charts (using Chart.js via react-chartjs-2).
+- **Modern styling**: Uses Tailwind CSS for a flat, minimal, and visually appealing look. Color palette and gradients are inspired by leading AI products.
+- **Recent activity** section with avatars and subtle hover effects.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Chat Page
+- **ChatGPT-like interface**: Scrollable chat history, fixed input bar, and mock user/assistant messages.
+- **Subtle animations**: Fade-in for messages, smooth scroll to bottom, and animated typing indicator.
+- **Sidebar** for chat history and new chat creation.
+- **Responsive**: Works well on mobile and desktop.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
+- **React.js** (with Next.js app directory for routing)
+- **Tailwind CSS** for styling
+- **Chart.js** (via react-chartjs-2) for charts
+- **Lucide React** for icons
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Setup Instructions
 
-## Deploy on Vercel
+1. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Run the development server:**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Open your browser:**
+   Visit [http://localhost:3000](http://localhost:3000)
+
+---
+
+## Code Structure
+- All main code is in [`/src/app`](./src/app)
+  - `page.tsx` – Landing page
+  - `dashboard/page.tsx` – Dashboard
+  - `chat/page.tsx` – Chat interface
+
+---
+
+## Design Choices
+- **Modern, minimal UI**: Inspired by OpenAI, Notion, and Linear.
+- **Consistent color palette**: Blues and purples for a tech-forward, AI feel.
+- **Flat minimalism**: Clean cards, soft gradients, and clear typography.
+- **Responsiveness**: Layouts adapt to all screen sizes.
+- **Subtle interactivity**: Animations for chat, hover effects, and smooth transitions.
+
+---
+
+## Assessment Checklist
+- [x] Landing page with hero and CTA
+- [x] Dashboard with metrics, charts, and navigation
+- [x] Chat page mimicking ChatGPT
+- [x] Modern, responsive, and accessible UI
+- [x] Code organized and readable
+
+---
+
+## Contact
+If you have any questions or concerns, feel free to reach out!
+
+---
+
+
