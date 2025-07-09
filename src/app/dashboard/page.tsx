@@ -183,8 +183,8 @@ export default function Dashboard() {
 
   const navigation = [
     { name: "Dashboard", icon: Home, href: "/dashboard", current: true },
-    { name: "Analytics", icon: BarChart3, href: "#", current: false },
     { name: "Chat", icon: MessageSquare, href: "/chat", current: false },
+    { name: "Analytics", icon: BarChart3, href: "#", current: false },
     { name: "Users", icon: Users, href: "#", current: false },
     { name: "Settings", icon: Settings, href: "#", current: false },
   ]
