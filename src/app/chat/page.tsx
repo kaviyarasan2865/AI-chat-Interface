@@ -340,7 +340,7 @@ export default function ChatPage() {
                 placeholder="Search chats"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-gray-100 text-gray-900 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-800 border border-gray-200"
+                className="w-full pl-10 pr-4 py-2 bg-gray-100 text-gray-900 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800 border border-gray-200"
               />
             </div>
 
@@ -397,7 +397,7 @@ export default function ChatPage() {
               placeholder="Search chats"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-gray-100 text-gray-900 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-800 border border-gray-200"
+              className="w-full pl-10 pr-4 py-2 bg-gray-100 text-gray-900 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800 border border-gray-200"
             />
           </div>
 
@@ -450,7 +450,7 @@ export default function ChatPage() {
               <ArrowLeft className="w-5 h-5" />
             </button>
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-800 to-purple-600 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-purple-800 to-purple-600 rounded-full flex items-center justify-center">
                 <Sparkles className="w-4 h-4 text-white" />
               </div>
               <div>
@@ -475,7 +475,7 @@ export default function ChatPage() {
               >
                 {message.sender === "assistant" ? (
                   <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-800 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-gradient-to-r from-purple-800 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <Sparkles className="w-4 h-4 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -506,7 +506,7 @@ export default function ChatPage() {
                 ) : (
                   <div className="flex justify-end">
                     <div className="max-w-xs lg:max-w-md xl:max-w-lg">
-                      <div className="bg-blue-800 text-white px-4 py-3 rounded-2xl rounded-br-md">
+                      <div className="bg-purple-800 text-white px-4 py-3 rounded-2xl rounded-br-md">
                         <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
                       </div>
                       <p className="text-xs text-gray-400 mt-1 text-right">{formatTime(message.timestamp)}</p>
@@ -519,7 +519,7 @@ export default function ChatPage() {
             {/* Typing indicator */}
             {isTyping && (
               <div className="flex items-start space-x-3 message-enter">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-800 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <div className="w-8 h-8 bg-gradient-to-r from-purple-800 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                   <Sparkles className="w-4 h-4 text-white" />
                 </div>
                 <div className="bg-gray-100 rounded-2xl rounded-bl-md px-4 py-3">
@@ -551,14 +551,14 @@ export default function ChatPage() {
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
                 placeholder="Message HelloAI..."
-                className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-800 focus:border-transparent resize-none min-h-[48px] max-h-[120px] leading-6"
+                className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-800 focus:border-transparent resize-none min-h-[48px] max-h-[120px] leading-6"
                 disabled={isTyping}
                 rows={1}
               />
               <button
                 onClick={handleSendMessage}
                 disabled={!inputValue.trim() || isTyping}
-                className="absolute right-2 bottom-4 p-2 bg-blue-800 text-white rounded-xl hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="absolute right-2 bottom-4 p-2 bg-purple-800 text-white rounded-xl hover:bg-purple-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 <Send className="w-4 h-4" />
               </button>

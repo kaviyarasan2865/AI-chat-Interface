@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import type { TooltipItem } from "chart.js"
 import {
   Chart as ChartJS,
@@ -38,8 +38,8 @@ const barData = {
     {
       label: "Monthly Performance",
       data: [400, 300, 600, 800, 500, 900],
-      backgroundColor: "rgba(59, 130, 246, 0.8)",
-      borderColor: "rgba(59, 130, 246, 1)",
+      backgroundColor: "rgba(139, 92, 246, 0.8)", // purple-500
+      borderColor: "rgba(139, 92, 246, 1)", // purple-500
       borderWidth: 1,
       borderRadius: 8,
       borderSkipped: false,
@@ -53,8 +53,8 @@ const lineData = {
     {
       label: "Users",
       data: [1200, 1900, 3000, 2780],
-      borderColor: "rgba(59, 130, 246, 1)",
-      backgroundColor: "rgba(59, 130, 246, 0.1)",
+      borderColor: "rgba(139, 92, 246, 1)", // purple-500
+      backgroundColor: "rgba(139, 92, 246, 0.1)", // purple-500
       tension: 0.4,
       fill: true,
     },
@@ -74,8 +74,16 @@ const doughnutData = {
   datasets: [
     {
       data: [45, 35, 20],
-      backgroundColor: ["rgba(59, 130, 246, 0.8)", "rgba(16, 185, 129, 0.8)", "rgba(245, 158, 11, 0.8)"],
-      borderColor: ["rgba(59, 130, 246, 1)", "rgba(16, 185, 129, 1)", "rgba(245, 158, 11, 1)"],
+      backgroundColor: [
+        "rgba(139, 92, 246, 0.8)", // purple-500
+        "rgba(16, 185, 129, 0.8)",
+        "rgba(245, 158, 11, 0.8)",
+      ],
+      borderColor: [
+        "rgba(139, 92, 246, 1)", // purple-500
+        "rgba(16, 185, 129, 1)",
+        "rgba(245, 158, 11, 1)",
+      ],
       borderWidth: 2,
     },
   ],
@@ -96,10 +104,10 @@ const chartOptions = {
       },
     },
     tooltip: {
-      backgroundColor: "rgba(0, 0, 0, 0.8)",
+      backgroundColor: "rgba(88, 28, 135, 0.8)", // purple-900
       titleColor: "white",
       bodyColor: "white",
-      borderColor: "rgba(255, 255, 255, 0.1)",
+      borderColor: "rgba(139, 92, 246, 0.5)", // purple-500
       borderWidth: 1,
       cornerRadius: 8,
       padding: 12,
@@ -118,7 +126,7 @@ const chartOptions = {
     },
     y: {
       grid: {
-        color: "rgba(0, 0, 0, 0.1)",
+        color: "rgba(139, 92, 246, 0.1)", // purple-500
       },
       ticks: {
         font: {
@@ -158,10 +166,10 @@ const doughnutOptions = {
       },
     },
     tooltip: {
-      backgroundColor: "rgba(0, 0, 0, 0.8)",
+      backgroundColor: "rgba(88, 28, 135, 0.8)", // purple-900
       titleColor: "white",
       bodyColor: "white",
-      borderColor: "rgba(255, 255, 255, 0.1)",
+      borderColor: "rgba(139, 92, 246, 0.5)", // purple-500
       borderWidth: 1,
       cornerRadius: 8,
       padding: 12,
@@ -177,9 +185,31 @@ const doughnutOptions = {
   cutout: "60%",
 }
 
+// Glassmorphism Loader Component
+function GlassLoader({ className = "", style = {} }: { className?: string; style?: React.CSSProperties }) {
+  return (
+    <div
+      className={`animate-pulse bg-white/30 backdrop-blur-md rounded-xl border border-white/30 shadow-inner ${className}`}
+      style={{ minHeight: 80, ...style }}
+    >
+      <div className="w-full h-full flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-t-transparent border-white/60 rounded-full animate-spin" />
+      </div>
+    </div>
+  )
+}
+
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const router = useRouter()
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1000)
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
 
   const navigation = [
     { name: "Dashboard", icon: Home, href: "/dashboard", current: true },
@@ -244,7 +274,7 @@ export default function Dashboard() {
                   }
                 }}
                 className={`group flex items-center px-3 py-2 text-sm font-medium rounded-lg mb-1 ${
-                  item.current ? "bg-blue-50 text-blue-700" : "text-gray-700 hover:bg-gray-50"
+                  item.current ? "bg-purple-50 text-purple-700" : "text-gray-700 hover:bg-gray-50"
                 }`}
               >
                 <item.icon className="mr-3 h-5 w-5" />
@@ -273,7 +303,7 @@ export default function Dashboard() {
                   }
                 }}
                 className={`group flex items-center px-3 py-2 text-sm font-medium rounded-lg mb-1 transition-colors ${
-                  item.current ? "bg-blue-50 text-blue-700" : "text-gray-700 hover:bg-gray-50"
+                  item.current ? "bg-purple-50 text-purple-700" : "text-gray-700 hover:bg-gray-50"
                 }`}
               >
                 <item.icon className="mr-3 h-5 w-5" />
@@ -296,7 +326,7 @@ export default function Dashboard() {
               <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
             </div>
             <div className="flex items-center space-x-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-800 to-purple-600 rounded-full"></div>
+              <div className="w-8 h-8 bg-gradient-to-r from-purple-800 to-purple-600 rounded-full"></div>
             </div>
           </div>
         </div>
@@ -305,26 +335,30 @@ export default function Dashboard() {
         <main className="p-4 sm:p-6 lg:p-8">
           {/* Stats */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-8">
-            {stats.map((stat) => (
-              <div
-                key={stat.name}
-                className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">{stat.name}</p>
-                    <p className="text-2xl font-semibold text-gray-900 mt-1">{stat.value}</p>
+            {loading
+              ? Array.from({ length: 4 }).map((_, i) => (
+                  <GlassLoader key={i} className="h-32" />
+                ))
+              : stats.map((stat) => (
+                  <div
+                    key={stat.name}
+                    className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm font-medium text-gray-600">{stat.name}</p>
+                        <p className="text-2xl font-semibold text-gray-900 mt-1">{stat.value}</p>
+                      </div>
+                      <div className="p-3 bg-purple-50 rounded-lg">
+                        <stat.icon className="h-6 w-6 text-purple-600" />
+                      </div>
+                    </div>
+                    <div className="mt-4 flex items-center">
+                      <span className="text-sm font-medium text-green-600">{stat.change}</span>
+                      <span className="text-sm text-gray-500 ml-2">from last month</span>
+                    </div>
                   </div>
-                  <div className="p-3 bg-blue-50 rounded-lg">
-                    <stat.icon className="h-6 w-6 text-blue-600" />
-                  </div>
-                </div>
-                <div className="mt-4 flex items-center">
-                  <span className="text-sm font-medium text-green-600">{stat.change}</span>
-                  <span className="text-sm text-gray-500 ml-2">from last month</span>
-                </div>
-              </div>
-            ))}
+                ))}
           </div>
 
           {/* Charts */}
@@ -333,7 +367,11 @@ export default function Dashboard() {
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Monthly Performance</h3>
               <div className="h-[300px]">
-                <Bar data={barData} options={chartOptions} />
+                {loading ? (
+                  <GlassLoader className="h-full" />
+                ) : (
+                  <Bar data={barData} options={chartOptions} />
+                )}
               </div>
             </div>
 
@@ -341,7 +379,11 @@ export default function Dashboard() {
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Growth Trends</h3>
               <div className="h-[300px]">
-                <Line data={lineData} options={lineOptions} />
+                {loading ? (
+                  <GlassLoader className="h-full" />
+                ) : (
+                  <Line data={lineData} options={lineOptions} />
+                )}
               </div>
             </div>
           </div>
@@ -352,7 +394,11 @@ export default function Dashboard() {
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Device Usage</h3>
               <div className="h-[250px]">
-                <Doughnut data={doughnutData} options={doughnutOptions} />
+                {loading ? (
+                  <GlassLoader className="h-full" />
+                ) : (
+                  <Doughnut data={doughnutData} options={doughnutOptions} />
+                )}
               </div>
             </div>
 
@@ -360,31 +406,35 @@ export default function Dashboard() {
             <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
               <div className="space-y-4">
-                {[
-                  { user: "Kaviyarasan", action: "completed a purchase", time: "2 minutes ago" },
-                  { user: "Naveen", action: "signed up for premium", time: "5 minutes ago" },
-                  { user: "Sany", action: "updated profile", time: "10 minutes ago" },
-                  { user: "Sri Prakash", action: "left a review", time: "15 minutes ago" },
-                  { user: "Venkatesh", action: "shared content", time: "20 minutes ago" },
-                ].map((activity, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors"
-                  >
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-800 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
-                      {activity.user
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm text-gray-900">
-                        <span className="font-medium">{activity.user}</span> {activity.action}
-                      </p>
-                      <p className="text-xs text-gray-500">{activity.time}</p>
-                    </div>
-                  </div>
-                ))}
+                {loading
+                  ? Array.from({ length: 5 }).map((_, i) => (
+                      <GlassLoader key={i} className="h-16" />
+                    ))
+                  : [
+                      { user: "Kaviyarasan", action: "completed a purchase", time: "2 minutes ago" },
+                      { user: "Naveen", action: "signed up for premium", time: "5 minutes ago" },
+                      { user: "Sany", action: "updated profile", time: "10 minutes ago" },
+                      { user: "Sri Prakash", action: "left a review", time: "15 minutes ago" },
+                      { user: "Venkatesh", action: "shared content", time: "20 minutes ago" },
+                    ].map((activity, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors"
+                      >
+                        <div className="w-8 h-8 bg-gradient-to-r from-purple-800 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
+                          {activity.user
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")}
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-sm text-gray-900">
+                            <span className="font-medium">{activity.user}</span> {activity.action}
+                          </p>
+                          <p className="text-xs text-gray-500">{activity.time}</p>
+                        </div>
+                      </div>
+                    ))}
               </div>
             </div>
           </div>
